@@ -5,14 +5,17 @@ class LinkedList {
     constructor(data){
         this.head = {
             data: data,
-            pointer: null
+            next: null,
+            back:null
         }
-        this.tail = this.head
+        
+        this.tail = this.head;
+        
         this.length = 1
     }
     
-    this.goNext = ()=>{
-      
+    this.goNext = (node)=>{
+      return node.next;
     };
     
     this.insertAfterHead = (data)=>{
