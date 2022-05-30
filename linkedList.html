@@ -32,6 +32,17 @@ class LinkedList {
         if(!this.head.next) this.head.next.back = node;
     };
     
+    this.insertBeforeHead = (data)=>{
+      
+        let node = {data:data, back: this.head, next:this.head.next};
+        
+        this.head.next = node;
+        
+        if(!this.head.next) this.head.next.back = node;
+    };
+    
+    
+    
     this.insetAfterTail = (data)=>{
       
         let node = {data:data, back: this.tail, next:null};
