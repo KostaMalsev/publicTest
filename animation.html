@@ -1,22 +1,22 @@
 <body>
 
 
-<div id="container"></div>
+  <div id="container"></div>
 
 
-<script src="https://threejs.org/build/three.min.js"></script>
+  <script src="https://threejs.org/build/three.min.js"></script>
 
 
 
-<canvas style="width:99%" id="FC">
+  <canvas style="width:99%" id="FC">
 
 
-<script id="vertexShader" type="x-shader/x-vertex">
+ <script id="vertexShader" type="x-shader/x-vertex">
 
-  void main() {
-    gl_Position = vec4( position, 1.0 );
+      void main() {
+ gl_Position = vec4( position, 1.0 );
     
-    mainImage(gl_FragColor, gl_FragCoord.xy);
+ mainImage(gl_FragColor, gl_FragCoord.xy);
 
   }
 
@@ -25,84 +25,50 @@
 
 <script id="fragmentShader" type="x-shader/x-fragment">
 
-#include <common>
+mat3 getRotZMat(float a){return mat3(cos(a),-sin(a),0.,sin(a),cos(a),0.,0.,0.,1.);}
 
-  uniform vec3 iResolution;
-  uniform float iTime;
-  
-//let FC = document.querySelector('#FC');
-#define R                           iResolution
-#define TO_TEX_COORDS(SC)         ( (SC) / (R.xy) )                  // in range x=[0.0; 1.0], y=[0.0; 1.0]
-#define TEX0(TC)                  ( texture(iChannel0, (TC)) )
-#define NMY                       ( iMouse.y / R.y )                 // in range [0.0; 1.0]
-#define LMB_IS_HOLD               ( iMouse.z > 0.0 )
+float dstepf = 0.0;
 
-//void main(void) {
-  
-
-float goldenRatioHash(float x)
+float map(vec3 p)
 {
-    float y = (100. + x);
-    float m = mod(1e3 * y, 11.67115450f);
-    float f = fract(m * (m * y));
-    float a = (f - m) * 6.18034029f;
-
-    return fract(a * fract(a * fract(a)));
+	p.x += sin(p.z*1.8);
+    p.y += cos(p.z*.2) * sin(p.x*.8);
+	p *= getRotZMat(p.z*0.8+sin(p.x)+cos(p.y));
+    p.xy = mod(p.xy, 0.3) - 0.15;
+	dstepf += 0.003;
+	return length(p.xy);
 }
 
-float goldenRatioHash2(vec2 p, float w)
-{ 
-    return goldenRatioHash(clamp(p.y * w + p.x, 0.1, 1e6));
-}
-
-/* Every num_of_frame returns true 
-and number of detected transitions. */
-bool transition(
-    in int frame,
-    in int numOfFrames,
-    inout float quotent)
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
-    // Convert to float.
-    float f = float(frame);
-    float inv = 1.0 / float(numOfFrames);
-    
-    // Calculate previous and current quotents.
-    float prev = floor(f * inv);
-    quotent = floor((f - 1.0) * inv);
-    
-    return quotent < prev;
+	vec2 uv = (fragCoord - iResolution.xy*.5 )/iResolution.y;
+    vec3 rd = normalize(vec3(uv, (1.-dot(uv, uv)*.5)*.5)); 
+    vec3 ro = vec3(0, 0, iTime*1.26), col = vec3(0), sp;
+	float cs = cos( iTime*0.375 ), si = sin( iTime*0.375 );    
+    rd.xz = mat2(cs, si,-si, cs)*rd.xz;
+	float t=0.06, layers=0., d=0., aD;
+    float thD = 0.02;
+	for(float i=0.; i<250.; i++)	
+	{
+        if(layers>15. || col.x > 1. || t>5.6) break;
+        sp = ro + rd*t;
+        d = map(sp); 
+        aD = (thD-abs(d)*15./16.)/thD;
+        if(aD>0.) 
+		{ 
+            col += aD*aD*(3.-2.*aD)/(1. + t*t*0.25)*.2; 
+            layers++; 
+		}
+        t += max(d*.7, thD*1.5) * dstepf; 
+	}
+    col = max(col, 0.);
+    col = mix(col, vec3(min(col.x*1.5, 1.), pow(col.x, 2.5), pow(col.x, 12.)), 
+              dot(sin(rd.yzx*8. + sin(rd.zxy*8.)), vec3(.1666))+0.4);
+    col = mix(col, vec3(col.x*col.x*.85, col.x, col.x*col.x*0.3), 
+             dot(sin(rd.yzx*4. + sin(rd.zxy*4.)), vec3(.1666))+0.25);
+	fragColor = vec4( clamp(col, 0., 1.), 1.0 );
 }
 
-vec2 broken_video_filter(in vec2 SC, float order)
-{
-    int r = int(READ_PIXEL(SC).b * (order * order - 1.0));
-    int y = r / int(order);
-    int x = r % int(order);
-    
-    y -= y>>1; x -= x>>1;
-    
-    return SC + vec2(x, y);
-}
-
-void mainImage( out vec4 O, in vec2 SC )
-{
-    vec2 P = SC;
-    
-    float order = LMB_IS_HOLD ?
-        NMY * 100. :
-        30.0;
-    
-    float num_of_throws = 0.;
-    transition(iFrame, 300, num_of_throws);
-    
-    for (int i = 0, e = max(1, int(num_of_throws) & 7); i < e; ++i)
-    {
-        P = broken_video_filter(P, order);
-    }
-
-    O = READ_PIXEL(P);
-}
-//}
 
   /*
   for (float i, e, g, v, u; i++ < 80.; g += e) {
@@ -122,80 +88,83 @@ void mainImage( out vec4 O, in vec2 SC )
 
 
 
+    <script type="module">
+      //THREE stuff:
 
-<script type="module">
+      var container;
+      var camera, scene, renderer;
+      var uniforms;
+      var startTime;
 
-//THREE stuff:
+      init();
+      animate();
 
-var container;
-var camera, scene, renderer;
-var uniforms;
-var startTime;
+      function init() {
 
-init();
-animate();
+        container = document.getElementById('container');
 
-function init() {
+        startTime = Date.now();
+        camera = new THREE.Camera();
+        camera.position.z = 1;
 
-  container = document.getElementById( 'container' );
+        scene = new THREE.Scene();
 
-  startTime = Date.now();
-  camera = new THREE.Camera();
-  camera.position.z = 1;
+        var geometry = new THREE.PlaneBufferGeometry(2, 1);
 
-  scene = new THREE.Scene();
+        uniforms = {
+          iGlobalTime: {
+            type: "f",
+            value: 1.0
+          },
+          iResolution: {
+            type: "v2",
+            value: new THREE.Vector2()
+          }
+        };
 
-  var geometry = new THREE.PlaneBufferGeometry( 2, 1 );
+        var material = new THREE.ShaderMaterial({
 
-  uniforms = {
-    iGlobalTime: { type: "f", value: 1.0 },
-    iResolution: { type: "v2", value: new THREE.Vector2() }
-  };
+          uniforms: uniforms,
+          vertexShader: document.getElementById('vertexShader').textContent,
+          fragmentShader: document.getElementById('fragmentShader').textContent
 
-  var material = new THREE.ShaderMaterial( {
+        });
 
-    uniforms: uniforms,
-    vertexShader: document.getElementById( 'vertexShader' ).textContent,
-    fragmentShader: document.getElementById( 'fragmentShader' ).textContent
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
 
-  } );
+        renderer = new THREE.WebGLRenderer();
+        container.appendChild(renderer.domElement);
 
-  var mesh = new THREE.Mesh( geometry, material );
-  scene.add( mesh );
+        onWindowResize();
 
-  renderer = new THREE.WebGLRenderer();
-  container.appendChild( renderer.domElement );
+        window.addEventListener('resize', onWindowResize, false);
 
-  onWindowResize();
+      }
 
-  window.addEventListener( 'resize', onWindowResize, false );
+      function onWindowResize(event) {
 
-}
+        uniforms.iResolution.value.x = window.innerWidth;
+        uniforms.iResolution.value.y = window.innerHeight;
 
-function onWindowResize( event ) {
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
-  uniforms.iResolution.value.x = window.innerWidth;
-  uniforms.iResolution.value.y = window.innerHeight;
+      }
 
-  renderer.setSize( window.innerWidth, window.innerHeight );
+      function animate() {
 
-}
+        requestAnimationFrame(animate);
+        render();
 
-function animate() {
+      }
 
-  requestAnimationFrame( animate );
-  render();
+      function render() {
 
-}
+        var currentTime = Date.now();
+        uniforms.iGlobalTime.value = (currentTime - startTime) * 0.001;
+        renderer.render(scene, camera);
 
-function render() {
-
-  var currentTime = Date.now();
-  uniforms.iGlobalTime.value = (currentTime - startTime) * 0.001;
-  renderer.render( scene, camera );
-
-}
-
-</script>
+      }
+    </script>
 
 </body>
