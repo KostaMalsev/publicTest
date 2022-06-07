@@ -7,7 +7,8 @@
 		}
 </script>
 
-<script // threejs.org/license
+<script> 
+// threejs.org/license
 (function(l,na){"object"===typeof exports&&"undefined"!==typeof module?na(exports):"function"===typeof define&&define.amd?define(["exports"],na):(l=l||self,na(l.THREE={}))})(this,function(l){function na(){}function D(a,b){this.x=a||0;this.y=b||0}function da(a,b,c,d){this._x=a||0;this._y=b||0;this._z=c||0;this._w=void 0!==d?d:1}function n(a,b,c){this.x=a||0;this.y=b||0;this.z=c||0}function ja(){this.elements=[1,0,0,0,1,0,0,0,1];0<arguments.length&&console.error("THREE.Matrix3: the constructor no longer reads arguments. use .set() instead.")}
 function Y(a,b,c,d,e,f,g,h,k,m){Object.defineProperty(this,"id",{value:ig++});this.uuid=O.generateUUID();this.name="";this.image=void 0!==a?a:Y.DEFAULT_IMAGE;this.mipmaps=[];this.mapping=void 0!==b?b:Y.DEFAULT_MAPPING;this.wrapS=void 0!==c?c:1001;this.wrapT=void 0!==d?d:1001;this.magFilter=void 0!==e?e:1006;this.minFilter=void 0!==f?f:1008;this.anisotropy=void 0!==k?k:1;this.format=void 0!==g?g:1023;this.type=void 0!==h?h:1009;this.offset=new D(0,0);this.repeat=new D(1,1);this.center=new D(0,0);this.rotation=
 0;this.matrixAutoUpdate=!0;this.matrix=new ja;this.generateMipmaps=!0;this.premultiplyAlpha=!1;this.flipY=!0;this.unpackAlignment=4;this.encoding=void 0!==m?m:3E3;this.version=0;this.onUpdate=null}function ea(a,b,c,d){this.x=a||0;this.y=b||0;this.z=c||0;this.w=void 0!==d?d:1}function Va(a,b,c){this.width=a;this.height=b;this.scissor=new ea(0,0,a,b);this.scissorTest=!1;this.viewport=new ea(0,0,a,b);c=c||{};this.texture=new Y(void 0,void 0,c.wrapS,c.wrapT,c.magFilter,c.minFilter,c.format,c.type,c.anisotropy,
@@ -1000,7 +1001,8 @@ Zc;l.TextBufferGeometry=lc;l.TextGeometry=jd;l.Texture=Y;l.TextureLoader=Sd;l.To
 function(a,b){console.warn("THREE.Uint32Attribute has been removed. Use new THREE.Uint32BufferAttribute() instead.");return new yb(a,b)};l.Uint32BufferAttribute=yb;l.Uint8Attribute=function(a,b){console.warn("THREE.Uint8Attribute has been removed. Use new THREE.Uint8BufferAttribute() instead.");return new Gc(a,b)};l.Uint8BufferAttribute=Gc;l.Uint8ClampedAttribute=function(a,b){console.warn("THREE.Uint8ClampedAttribute has been removed. Use new THREE.Uint8ClampedBufferAttribute() instead.");return new Hc(a,
 b)};l.Uint8ClampedBufferAttribute=Hc;l.Uncharted2ToneMapping=3;l.Uniform=ee;l.UniformsLib=I;l.UniformsUtils=Eh;l.UnsignedByteType=1009;l.UnsignedInt248Type=1020;l.UnsignedIntType=1014;l.UnsignedShort4444Type=1017;l.UnsignedShort5551Type=1018;l.UnsignedShort565Type=1019;l.UnsignedShortType=1012;l.Vector2=D;l.Vector3=n;l.Vector4=ea;l.VectorKeyframeTrack=sc;l.Vertex=function(a,b,c){console.warn("THREE.Vertex has been removed. Use THREE.Vector3 instead.");return new n(a,b,c)};l.VertexColors=2;l.VertexNormalsHelper=
 yd;l.VideoTexture=ye;l.WebGLMultisampleRenderTarget=ne;l.WebGLRenderTarget=Va;l.WebGLRenderTargetCube=mb;l.WebGLRenderer=we;l.WebGLUtils=Ef;l.WireframeGeometry=dc;l.WireframeHelper=function(a,b){console.warn("THREE.WireframeHelper has been removed. Use THREE.WireframeGeometry instead.");return new U(new dc(a.geometry),new W({color:void 0!==b?b:16777215}))};l.WrapAroundEnding=2402;l.XHRLoader=function(a){console.warn("THREE.XHRLoader has been renamed to THREE.FileLoader.");return new Na(a)};l.ZeroCurvatureEnding=
-2400;l.ZeroFactor=200;l.ZeroSlopeEnding=2401;l.ZeroStencilOp=0;l.sRGBEncoding=3001;Object.defineProperty(l,"__esModule",{value:!0})});></script>
+2400;l.ZeroFactor=200;l.ZeroSlopeEnding=2401;l.ZeroStencilOp=0;l.sRGBEncoding=3001;Object.defineProperty(l,"__esModule",{value:!0})});>
+</script>
 
   <!-- orinal from https://www.shadertoy.com/view/Ms2SD1 -->
   <script id="fragment-shader" type="no-js">
