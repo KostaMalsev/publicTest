@@ -23,8 +23,7 @@
 <script id="fragmentShader" type="x-shader/x-fragment">
 
 //let FC = document.querySelector('#FC');
-
-  #define R                           iResolution
+#define R                           iResolution
 #define TO_TEX_COORDS(SC)         ( (SC) / (R.xy) )                  // in range x=[0.0; 1.0], y=[0.0; 1.0]
 #define TEX0(TC)                  ( texture(iChannel0, (TC)) )
 #define NMY                       ( iMouse.y / R.y )                 // in range [0.0; 1.0]
