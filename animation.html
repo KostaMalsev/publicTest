@@ -300,13 +300,19 @@ void main() {
         container = document.getElementById('container');
 
         startTime = Date.now();
-        camera = new THREE.Camera();
-        camera.position.z = 1;
+        
+				const fov = 75;
+	const aspect = 2; // the canvas default
+	const near = 0.1;
+	const far = 5;
+	const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+	camera.position.z = 2;
 
-        scene = new THREE.Scene();
-
-        var geometry = new THREE.PlaneBufferGeometry(2, 1);
-
+	const scene = new THREE.Scene();
+	const boxWidth = 1;
+	const boxHeight = 1;
+	const boxDepth = 1;
+	const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
         uniforms = {
           iGlobalTime: {
             type: "f",
@@ -321,7 +327,7 @@ void main() {
         var material = new THREE.ShaderMaterial({
 
           uniforms: uniforms,
-          //vertexShader: document.getElementById('vertexShader').textContent,
+          vertexShader: document.getElementById('vertexShader').textContent,
           fragmentShader: document.getElementById('fragmentShader').textContent
 
         });
