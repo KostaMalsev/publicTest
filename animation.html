@@ -11,14 +11,13 @@
   <canvas style="width:99%" id="FC">
 
 
-    <script id="vertexShader" type="x-shader/x-vertex">
-      
- void main() {
-   //gl_Position = vec4( position, 1.0 );
-    
-   //mainImage(gl_FragColor, gl_FragCoord.xy);
+ <script id="vertexShader" type="x-shader/x-vertex">
 
-  }
+   	varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    }
 
 </script>
 
