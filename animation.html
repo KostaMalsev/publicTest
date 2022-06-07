@@ -25,7 +25,7 @@ let FC = document.querySelector('#FC');
 void main(void) {
 
   for (float i, e, g, v, u; i++ < 80.; g += e) {
-    attribute vec3 p = vec3((.5 * r - FC.xy) / r.y * g, g - 4.);
+    vec3 p = vec3((.5 * r - FC.xy) / r.y * g, g - 4.);
     p.xz *= rotate2D(t * .2);
     e = v = 2.;
 
