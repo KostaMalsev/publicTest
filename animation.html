@@ -29,7 +29,7 @@
 #define NMY                       ( iMouse.y / R.y )                 // in range [0.0; 1.0]
 #define LMB_IS_HOLD               ( iMouse.z > 0.0 )
 
-void main(void) {
+//void main(void) {
   
 
 float goldenRatioHash(float x)
@@ -92,9 +92,9 @@ void mainImage( out vec4 O, in vec2 SC )
         P = broken_video_filter(P, order);
     }
 
-    O = READ_PIXEL(P);
+    //O = READ_PIXEL(P);
 }
-
+//}
 
   /*
   for (float i, e, g, v, u; i++ < 80.; g += e) {
