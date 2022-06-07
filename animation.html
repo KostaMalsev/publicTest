@@ -36,12 +36,7 @@ mat3 getRotZMat(float a){return mat3(cos(a),-sin(a),0.,sin(a),cos(a),0.,0.,0.,1.
 float dstepf = 0.0;
 
 
-void main() {
-   //gl_Position = vec4( position, 1.0 );
-    
-   mainImage(gl_FragColor, gl_FragCoord.xy);
 
-  }
 
 
 float map(vec3 p)
@@ -84,6 +79,12 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 	fragColor = vec4( clamp(col, 0., 1.), 1.0 );
 }
 
+void main() {
+   //gl_Position = vec4( position, 1.0 );
+    
+   mainImage(gl_FragColor, gl_FragCoord.xy);
+
+  }
 /*void main() {
    //gl_Position = vec4( position, 1.0 );
     
