@@ -22,11 +22,82 @@
 
 <script id="fragmentShader" type="x-shader/x-fragment">
 
-let FC = document.querySelector('#FC');
+//let FC = document.querySelector('#FC');
 
+  #define R                           iResolution
+#define TO_TEX_COORDS(SC)         ( (SC) / (R.xy) )                  // in range x=[0.0; 1.0], y=[0.0; 1.0]
+#define TEX0(TC)                  ( texture(iChannel0, (TC)) )
+#define NMY                       ( iMouse.y / R.y )                 // in range [0.0; 1.0]
+#define LMB_IS_HOLD               ( iMouse.z > 0.0 )
 
 void main(void) {
+  
 
+float goldenRatioHash(float x)
+{
+    float y = (100. + x);
+    float m = mod(1e3 * y, 11.67115450f);
+    float f = fract(m * (m * y));
+    float a = (f - m) * 6.18034029f;
+
+    return fract(a * fract(a * fract(a)));
+}
+
+float goldenRatioHash2(vec2 p, float w)
+{ 
+    return goldenRatioHash(clamp(p.y * w + p.x, 0.1, 1e6));
+}
+
+/* Every num_of_frame returns true 
+and number of detected transitions. */
+bool transition(
+    in int frame,
+    in int numOfFrames,
+    inout float quotent)
+{
+    // Convert to float.
+    float f = float(frame);
+    float inv = 1.0 / float(numOfFrames);
+    
+    // Calculate previous and current quotents.
+    float prev = floor(f * inv);
+    quotent = floor((f - 1.0) * inv);
+    
+    return quotent < prev;
+}
+
+vec2 broken_video_filter(in vec2 SC, float order)
+{
+    int r = int(READ_PIXEL(SC).b * (order * order - 1.0));
+    int y = r / int(order);
+    int x = r % int(order);
+    
+    y -= y>>1; x -= x>>1;
+    
+    return SC + vec2(x, y);
+}
+
+void mainImage( out vec4 O, in vec2 SC )
+{
+    vec2 P = SC;
+    
+    float order = LMB_IS_HOLD ?
+        NMY * 100. :
+        30.0;
+    
+    float num_of_throws = 0.;
+    transition(iFrame, 300, num_of_throws);
+    
+    for (int i = 0, e = max(1, int(num_of_throws) & 7); i < e; ++i)
+    {
+        P = broken_video_filter(P, order);
+    }
+
+    O = READ_PIXEL(P);
+}
+
+
+  /*
   for (float i, e, g, v, u; i++ < 80.; g += e) {
     vec3 p = vec3((.5 * r - FC.xy) / r.y * g, g - 4.);
     p.xz *= rotate2D(t * .2);
@@ -36,7 +107,7 @@ void main(void) {
       v /= u = dot(p, p), p /= u, p.y = 1.7 - p.y;
     o += vec4(4, 2, 1, 0) * .007 / exp(p.y / v);
   }
-}
+}*/
 
 </script>
 
