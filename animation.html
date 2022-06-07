@@ -4,7 +4,10 @@
 
 
 <script id="vertexShader" type="x-shader/x-vertex">
-let FC = document.querySelector('#FC')
+let FC = document.querySelector('#FC');
+
+void main(void) {
+
 for(float i,e,g,v,u;i++<80.;g+=e)
 {
   vec3 p=vec3((.5*r-FC.xy)/r.y*g,g-4.);
@@ -15,6 +18,7 @@ for(float i,e,g,v,u;i++<80.;g+=e)
     v/=u=dot(p,p),p/=u,p.y=1.7-p.y;
   o+=vec4(4,2,1,0)*.007/exp(p.y/v);
   }
+}
 </script>
 
 </body>
