@@ -2,6 +2,7 @@
 <body>
 
 <canvas style="width:99%" id='FC>
+
 <script type="x-shader/x-fragment">
 let FC = document.querySelector('#FC')
 for(float i,e,g,v,u;i++<80.;g+=e){vec3 p=vec3((.5*r-FC.xy)/r.y*g,g-4.);p.xz*=rotate2D(t*.2);e=v=2.;for(int j;j++<12;j>3?e=min(e,length(p.xz+length(p)/u*.55)/v-.005),p.xz=abs(p.xz)-.7,p:p=abs(p)-.9)v/=u=dot(p,p),p/=u,p.y=1.7-p.y;o+=vec4(4,2,1,0)*.007/exp(p.y/v);}
