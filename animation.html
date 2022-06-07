@@ -12,14 +12,14 @@
 
 
  <script id="vertexShader" type="x-shader/x-vertex">
-
+/*
  void main() {
    gl_Position = vec4( position, 1.0 );
     
    mainImage(gl_FragColor, gl_FragCoord.xy);
 
   }
-
+*/
 </script>
 
 
@@ -68,6 +68,13 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
              dot(sin(rd.yzx*4. + sin(rd.zxy*4.)), vec3(.1666))+0.25);
 	fragColor = vec4( clamp(col, 0., 1.), 1.0 );
 }
+
+void main() {
+   //gl_Position = vec4( position, 1.0 );
+    
+   mainImage(gl_FragColor, gl_FragCoord.xy);
+
+  }
 
 
   /*
@@ -125,7 +132,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
         var material = new THREE.ShaderMaterial({
 
           uniforms: uniforms,
-          vertexShader: document.getElementById('vertexShader').textContent,
+          //vertexShader: document.getElementById('vertexShader').textContent,
           fragmentShader: document.getElementById('fragmentShader').textContent
 
         });
