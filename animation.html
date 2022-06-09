@@ -301,18 +301,13 @@ void main() {
 
         startTime = Date.now();
         
-				const fov = 75;
-	const aspect = 2; // the canvas default
-	const near = 0.1;
-	const far = 5;
-	const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-	camera.position.z = 2;
+				camera = new THREE.Camera();
+        camera.position.z = 2;
 
-	const scene = new THREE.Scene();
-	const boxWidth = 1;
-	const boxHeight = 1;
-	const boxDepth = 1;
-	const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
+        scene = new THREE.Scene();
+
+        var geometry = new THREE.PlaneBufferGeometry(2, 1);
+
         uniforms = {
           iGlobalTime: {
             type: "f",
