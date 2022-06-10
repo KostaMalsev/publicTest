@@ -198,7 +198,9 @@ console.log(maX.getMax());
 let j=5;
 let res = [];
 while(j > 0){
-  res.push(miN.remove());
+  
+  res.push(miN.getMin());
+  miN.remove();
   j--;
 }
 console.log('5 biggest numbers',res)
