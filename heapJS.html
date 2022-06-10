@@ -1,25 +1,6 @@
 <script>
 
 
-//Testing:
-
-let miN = new MinHeap();
-
-let tstArr = [4,5,6,2,7,88,9,0,-2,7,7];
-
-tstArr.forEach(el=>{
-  miN.insert(el);
-});
-
-console.log(miN.getMin());
-
-
-
-
-
-
-
-
 
 //Impl:
 
@@ -195,6 +176,20 @@ class MaxHeap {
         return biggest
     }
 }
+
+
+//Testing:
+
+let miN = new MinHeap();
+
+let tstArr = [4,5,6,2,7,88,9,0,-2,7,7];
+
+tstArr.forEach(el=>{
+  miN.insert(el);
+});
+
+console.log(miN.getMin());
+
 
 
 </script>
