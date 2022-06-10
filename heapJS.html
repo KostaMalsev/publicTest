@@ -184,6 +184,7 @@ let miN = new MinHeap();
 let maX = new MaxHeap();
 
 let tstArr = [4,5,6,2,7,88,9,0,-2,7,7];
+console.log('tstArr:',tstArr);
 
 tstArr.forEach(el=>{
   miN.insert(el);
@@ -192,6 +193,16 @@ tstArr.forEach(el=>{
 
 console.log(miN.getMin());
 console.log(maX.getMax());
+
+
+let j=5;
+let res = [];
+while(j > 0){
+  res.push(miN.remove());
+  j--;
+}
+console.log('5 biggest numbers',res)
+
 
 
 
