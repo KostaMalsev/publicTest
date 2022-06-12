@@ -61,25 +61,24 @@ function addNode(node, ind, parent)
 							children:[{},{}]};
 							
 		node = nd;
-		console.log('ind,node:',ind,node);
+		//console.log('ind,node:',ind,node);
 
 		node.children[0] = addNode(node.children[0], ind + 2, node.name);
 		
 		node.children[1] = addNode(node.children[1], ind + 3, node.name);
 		
-
 		return nd;
 
 	}
   
 }
 
-addNode(treeT[0],0,null);
+treeT[0] = addNode(treeT[0],0,null);
 console.log(treeT);
+let treeData = treeT;
 
 
-
-
+/*
 var treeData = [
   {
     "name": "Top Level",
@@ -106,7 +105,7 @@ var treeData = [
     ]
   }
 ];
-
+*/
 
 // ************** Generate the tree diagram	 *****************
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
