@@ -39,7 +39,7 @@
 
 
         <script>
-            let arr = [-2, 0, 6, 2, 7, 88, 9, 5, 4, 7, 7];
+            let arr = [-2, null, 0, 6, 2, 7, 88, 9, 5, 4, 7, 7];
 
 
             document.querySelector('#array').innerHTML = 'array:' + arr;
@@ -51,7 +51,7 @@
 
                 if ((ind > arr.length - 1) || arr[ind] == null) {
                     if (arr[ind] == null) console.log('node:',node,ind)
-                    return null;
+                    return {name:'null',parent:parent,children:[]};
 
                 } else {
 
