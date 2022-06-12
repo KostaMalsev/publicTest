@@ -4,7 +4,7 @@
 // var d3 = require('d3')
 // This will make a heap node by node in a nice animation type thing.
 
-var arr = [ 99,
+/*var arr = [ 99,
 94,
 81,
 75,
@@ -15,7 +15,8 @@ var arr = [ 99,
 52,
 28,
 35,
-33, 0, 22]// 15, 4, 6 , 1 ,23 ]//, 21, 30, 21, 40, 292, 32, 49]
+33, 0, 22]*/
+// 15, 4, 6 , 1 ,23 ]//, 21, 30, 21, 40, 292, 32, 49]
 
 let arr = [4, 5, 6, 2, 7, 88, 9, 0, -2, 7, 7];
 arr = makeRandArray(15)
