@@ -39,7 +39,7 @@
 
 
         <script>
-            let arr = [-2, null, null, 6, 2, 7, 88, 9, 5, 4, 7, 7];
+            let arr = [-2, null, 6, 2, 7, 88, 9, 5, 4, 7, 7];
 
 
             document.querySelector('#array').innerHTML = 'array:' + arr;
@@ -49,8 +49,11 @@
             //Reads array and create a tree:
             function addNode(node, ind, parent) {
 
-                if ((ind > arr.length - 1) || arr[ind] == null) {
-                    return {name:'null',parent:parent,children:[]};
+                if ((ind > arr.length - 1) || arr[ind] == null) 
+                {
+                    if(arr[ind] == null)
+                      return {name:'null',parent:parent,children:[]};
+                    return null;
 
                 } else {
 
@@ -70,14 +73,14 @@
                     if (left != null )
                     {
                         if(left.name == 'null') 
-                          node.children[1] = {};
+                          node.children[1] = {parent:left.parent};
                         else
                           node.children[1] = left;
                     }
                     if (right != null )
                     {
-                      if(left.name == 'null')
-                        node.children[0] = {};
+                      if(right.name == 'null')
+                        node.children[0] = {parent:right.parent};
                       else  node.children[0] = right;
                     }
                     return nd;
