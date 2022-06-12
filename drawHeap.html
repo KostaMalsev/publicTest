@@ -44,8 +44,8 @@
 
 <script>
 
-//let arr = [4, 5, 6, 2, 7, 88, 9, 0, -2, 7, 7];
-let arr = [4, 5, 6];
+let arr = [4, 5, 6, 2, 7, 88, 9, 0, -2, 7, 7];
+//let arr = [4, 5, 6];
 //let tree = [ {name:heap[0],parent:null,children:[{},{}] } ];
 let treeT = [{}];
 
@@ -53,7 +53,7 @@ let treeT = [{}];
 function addNode(node, ind, parent)
 {
   
-	if(ind > arr.length-1)
+	if(ind >= arr.length-1)
 	{
 		return {};
 		
@@ -64,10 +64,16 @@ function addNode(node, ind, parent)
 		node = nd;
 		//console.log('ind,node:',ind,node);
 
+		/*
 		node.children[0] = addNode(node.children[0], 2*ind + 1, node.name);
-		
 		node.children[1] = addNode(node.children[1], 2*ind + 2, node.name);
+		*/
+		node.children[0] = addNode(node.children[0], 2*ind + 1, node.name);
+		node.children[1] = addNode(node.children[1], 2*ind + 2, node.name);
+
 		
+		if(nd.children[1] == {} && nd.children[0] == {})
+			nd.children = [];
 		return nd;
 
 	}
@@ -76,10 +82,10 @@ function addNode(node, ind, parent)
 
 treeT[0] = addNode(treeT[0],0,'null');
 console.log('preTree:',treeT);
-//let treeData = treeT;
+let treeData = treeT;
 
 
-
+/*
 var treeData = [
   {
     "name": "Top Level",
@@ -105,7 +111,7 @@ var treeData = [
       }
     ]
   }
-];
+];*/
 
 console.log('formatted tree:',treeData)
 
