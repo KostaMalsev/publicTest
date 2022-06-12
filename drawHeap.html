@@ -46,7 +46,7 @@
 
 <script>
 
-let arr = [null, -2, 0, 6, 2, 7, 88, 9, 5, 4, 7, 7,null];
+let arr = [-2, ,null, 0, 6, 2, 7, 88, 9, 5, 4, 7, 7];
 document.querySelector('#array').innerHTML = 'array:' +arr;
 let treeT = [{}];
 
@@ -54,7 +54,7 @@ let treeT = [{}];
 function addNode(node, ind, parent)
 {
   
-	if(ind > arr.length-1)
+	if(ind > arr.length-1 && arr[ind]==null)
 	{
 		return null;
 		
@@ -70,9 +70,9 @@ function addNode(node, ind, parent)
 		
 		node.children = [];
 		
-		if(left)
+		if(left!=null)
 			node.children[1] = left;
-		if(right)
+		if(right!=null)
 			node.children[0] = right;
 		
 		return nd;
