@@ -45,8 +45,8 @@
 <script>
 
 let heap = [4, 5, 6, 2, 7, 88, 9, 0, -2, 7, 7];
-let tree = [ {name:heap[0],parent:null,children:[{},{}] } ];
-
+//let tree = [ {name:heap[0],parent:null,children:[{},{}] } ];
+let tree = [{}]
 
 //Reads array and create a tree:
 function addNode(node,parent,ind)
@@ -70,6 +70,12 @@ function addNode(node,parent,ind)
 	}
   
 }
+
+addNode(tree[0],0,null);
+console.log(tree);
+
+
+return;
 
 
 var treeData = [
