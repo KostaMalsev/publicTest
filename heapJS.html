@@ -44,9 +44,9 @@
       */
       if (this.heap.length > 2) 
       {
-        this.heap[1] = this.heap[this.heap.length - 1]
+        this.heap[1] = this.heap[this.heap.length - 1];
         
-        this.heap.splice(this.heap.length - 1)
+        this.heap.splice(this.heap.length - 1);
 
         if (this.heap.length === 3) 
         {
@@ -70,7 +70,7 @@
             this.heap[current] > this.heap[rightChildIndex])) 
             {
               
-              console.log('heapfy:',this.heap,rightChildIndex,leftChildIndex);
+              console.log('heapfy:',this.heap,current,rightChildIndex,leftChildIndex);
               
           if (this.heap[leftChildIndex] < this.heap[rightChildIndex]) {
             [this.heap[current], this.heap[leftChildIndex]] = [this.heap[leftChildIndex], this.heap[current]]
