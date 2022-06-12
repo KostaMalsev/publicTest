@@ -62,15 +62,16 @@
         
         let rightChildIndex = current * 2 + 1;
 
-        while (this.heap[leftChildIndex]!=null &&
-          this.heap[rightChildIndex]!=null &&
+        while (this.heap[leftChildIndex]!=null && this.heap[leftChildIndex]!==undefined &&
+          this.heap[rightChildIndex]!=null && this.heap[rightChildIndex]!== undefined && 
           (this.heap[current] > this.heap[leftChildIndex] ||
             this.heap[current] > this.heap[rightChildIndex])) 
             {
               
               console.log('heapfy:',this.heap,current,rightChildIndex,leftChildIndex);
               
-          if (this.heap[leftChildIndex] < this.heap[rightChildIndex]) {
+          if (this.heap[leftChildIndex] < this.heap[rightChildIndex]) 
+          {
             [this.heap[current], this.heap[leftChildIndex]] = [this.heap[leftChildIndex], this.heap[current]]
             current = leftChildIndex;
           } else {
