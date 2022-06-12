@@ -87,6 +87,9 @@ let treeData = treeT;
 
 console.log('formatted tree:',treeData)
 
+
+
+
 // ************** Generate the tree diagram	 *****************
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
 	width = 960 - margin.right - margin.left,
@@ -111,10 +114,18 @@ var svg = d3.select("body").append("svg")
 root = treeData[0];
 root.x0 = height / 2;
 root.y0 = 0;
+
+
   
 update(root);
 
+
+
 d3.select(self.frameElement).style("height", "500px");
+
+
+
+
 
 function update(source) {
 
