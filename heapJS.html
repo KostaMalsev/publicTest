@@ -54,9 +54,11 @@
           return smallest
         }
 
-        let current = 1
-        let leftChildIndex = current * 2
-        let rightChildIndex = current * 2 + 1
+        let current = 1;
+        
+        let leftChildIndex = current * 2;
+        
+        let rightChildIndex = current * 2 + 1;
 
         while (this.heap[leftChildIndex] &&
           this.heap[rightChildIndex] &&
