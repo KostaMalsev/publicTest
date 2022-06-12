@@ -17,7 +17,7 @@ var arr = [ 99,
 35,
 33, 0, 22]// 15, 4, 6 , 1 ,23 ]//, 21, 30, 21, 40, 292, 32, 49]
 
-
+let arr = [4, 5, 6, 2, 7, 88, 9, 0, -2, 7, 7];
 arr = makeRandArray(15)
 
 var duration = 500; // 700 a good moderate speed
