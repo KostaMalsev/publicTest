@@ -49,9 +49,9 @@
             //Reads array and create a tree:
             function addNode(node, ind, parent) {
 
-                if ((ind > arr.length - 1) && arr[ind] == null) {
-                    if (arr[ind] == null) console.log('node:',node)
-                        return null;
+                if ((ind > arr.length - 1) || arr[ind] == null) {
+                    if (arr[ind] == null) console.log('node:',node,ind)
+                    return null;
 
                 } else {
 
@@ -62,7 +62,7 @@
                     };
 
                     node = nd;
-
+                    
                     let left = addNode(node.children[0], 2 * ind + 1, node.name);
                     let right = addNode(node.children[1], 2 * ind + 2, node.name);
 
