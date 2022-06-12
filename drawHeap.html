@@ -49,13 +49,15 @@ let tree = [{name:'root',parent:null,children:[]}];
 
 
 //Reads array and create a tree:
-function heapToTree(node,ind)
+function addNode(node,parent,ind)
 {
   
-
 	if(ind > heap.length-1)
 	{
-		return 
+		return;
+	}else{
+		let nd = {name:arr[ind],parent:parent.name,
+							children:[{},{}]};
 	}
   
 }
