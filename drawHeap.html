@@ -56,8 +56,13 @@ function addNode(node,parent,ind)
 	{
 		return;
 	}else{
-		let nd = {name:arr[ind],parent:parent.name,
+		
+		let nd = {name:arr[ind],parent:parent,
 							children:[{},{}]};
+		node = nd;
+		addNode(node.children[0], ind + 2, node.name);
+		addNode(node.children[1], ind + 3, node.name);
+		
 	}
   
 }
