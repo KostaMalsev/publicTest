@@ -55,7 +55,7 @@ function addNode(node, ind, parent)
   
 	if(ind > arr.length-1)
 	{
-		return;
+		return {};
 		
 	}else{
 		let nd = {name:arr[ind],parent:parent,
@@ -64,9 +64,9 @@ function addNode(node, ind, parent)
 		node = nd;
 		//console.log('ind,node:',ind,node);
 
-		node.children[0] = addNode(node.children[0], ind + 2, node.name);
+		node.children[0] = addNode(node.children[0], 2*ind + 1, node.name);
 		
-		node.children[1] = addNode(node.children[1], ind + 3, node.name);
+		node.children[1] = addNode(node.children[1], 2*ind + 2, node.name);
 		
 		return nd;
 
