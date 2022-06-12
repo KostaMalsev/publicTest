@@ -33,7 +33,9 @@
       }
     }
 
-    remove() {
+    remove() 
+    {
+      
       /* Smallest element is at the index 1 in the heap array */
       let smallest = this.heap[1]
 
@@ -60,10 +62,10 @@
         
         let rightChildIndex = current * 2 + 1;
 
-        console.log('heapfy:',this.heap,rightChildIndex,leftChildIndex);
+        //console.log('heapfy:',this.heap,rightChildIndex,leftChildIndex);
 
-        while (this.heap[leftChildIndex] &&
-          this.heap[rightChildIndex] &&
+        while (this.heap[leftChildIndex]!=null &&
+          this.heap[rightChildIndex]!=null &&
           (this.heap[current] > this.heap[leftChildIndex] ||
             this.heap[current] > this.heap[rightChildIndex])) 
             {
@@ -72,14 +74,14 @@
               
           if (this.heap[leftChildIndex] < this.heap[rightChildIndex]) {
             [this.heap[current], this.heap[leftChildIndex]] = [this.heap[leftChildIndex], this.heap[current]]
-            current = leftChildIndex
+            current = leftChildIndex;
           } else {
             [this.heap[current], this.heap[rightChildIndex]] = [this.heap[rightChildIndex], this.heap[current]]
-            current = rightChildIndex
+            current = rightChildIndex;
           }
 
-          leftChildIndex = current * 2
-          rightChildIndex = current * 2 + 1
+          leftChildIndex = current * 2;
+          rightChildIndex = current * 2 + 1;
         }
       }
 
