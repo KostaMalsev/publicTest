@@ -39,7 +39,7 @@
 
 
         <script>
-            let arr = [-2, null, 0, 6, 2, 7, 88, 9, 5, 4, 7, 7];
+            let arr = [-2, null, null, 6, 2, 7, 88, 9, 5, 4, 7, 7];
 
 
             document.querySelector('#array').innerHTML = 'array:' + arr;
@@ -50,7 +50,6 @@
             function addNode(node, ind, parent) {
 
                 if ((ind > arr.length - 1) || arr[ind] == null) {
-                    if (arr[ind] == null) console.log('node:',node,ind)
                     return {name:'null',parent:parent,children:[]};
 
                 } else {
@@ -68,9 +67,9 @@
 
                     node.children = [];
 
-                    if (left != null)
+                    if (left != null )
                         node.children[1] = left;
-                    if (right != null)
+                    if (right != null )
                         node.children[0] = right;
 
                     return nd;
