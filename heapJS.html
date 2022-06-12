@@ -193,18 +193,19 @@
     maX.insert(el);
   });
 
-  //console.log('min:',miN.heap);
+  console.log('min:',miN.heap);
   //console.log('max:',maX.heap);
 
 
   let j = 10;
   let res = [];
+  
   while (j > 0) {
 
     res.push(miN.getMin());
     let tmp = miN.getMin();
     miN.remove();
-    console.log('min:',miN.heap,'popped:',tmp);
+    console.log('min:',miN.heap,'popped:',tmp,miN);
 
     j--;
   }
