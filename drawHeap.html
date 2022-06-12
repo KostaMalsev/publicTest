@@ -45,12 +45,15 @@
 <script>
 
 let heap = [4, 5, 6, 2, 7, 88, 9, 0, -2, 7, 7];
-let tree = [{name:'root',parent:null,children:null}];
+let tree = [{name:'root',parent:null,children:[]}];
+
 
 //Reads array and create a tree:
 function heapToTree(node,ind)
 {
-  if(ind > heap.length-1)
+  
+
+	if(ind > heap.length-1)
 	{
 		return 
 	}
