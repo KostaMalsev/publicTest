@@ -62,14 +62,16 @@
 
 					node = nd;
 
-					let left = addNode(node.children[0], 2 * ind + 1, node.name);
+					if ()
+
+						let left = addNode(node.children[0], 2 * ind + 1, node.name);
 					let right = addNode(node.children[1], 2 * ind + 2, node.name);
 
 					node.children = [];
 
 					if (left != null)
 						node.children[1] = left;
-					if(right!=null)
+					if (right != null)
 						node.children[0] = right;
 
 					return nd;
@@ -86,7 +88,7 @@
 
 
 
-			// ************** Generate the tree diagram	 *****************
+			// ************** Generate the tree diagram *****************
 			var margin = {
 					top: 20,
 					right: 120,
@@ -264,30 +266,30 @@
 
 			/*
 			var treeData = [
-			  {
-			    "name": "Top Level",
-			    "parent": "null",
-			    "children": [
-			      {
-			        "name": "Level 2: A",
-			        "parent": "Top Level",
-			        "children": [
-			          {
-			            "name": "Son of A",
-			            "parent": "Level 2: A"
-			          },
-			          {
-			            "name": "Daughter of A",
-			            "parent": "Level 2: A"
-			          }
-			        ]
-			      },
-			      {
-			        "name": "Level 2: B",
-			        "parent": "Top Level"
-			      }
-			    ]
-			  }
+			 {
+			 "name": "Top Level",
+			 "parent": "null",
+			 "children": [
+			 {
+			 "name": "Level 2: A",
+			 "parent": "Top Level",
+			 "children": [
+			 {
+			 "name": "Son of A",
+			 "parent": "Level 2: A"
+			 },
+			 {
+			 "name": "Daughter of A",
+			 "parent": "Level 2: A"
+			 }
+			 ]
+			 },
+			 {
+			 "name": "Level 2: B",
+			 "parent": "Top Level"
+			 }
+			 ]
+			 }
 			];*/
 		</script>
 
