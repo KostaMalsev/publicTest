@@ -45,8 +45,6 @@
 <script>
 
 let arr = [4, 5, 6, 2, 7, 88, 9, 0, -2, 7, 7];
-//let arr = [4, 5, 6];
-//let tree = [ {name:heap[0],parent:null,children:[{},{}] } ];
 let treeT = [{}];
 
 //Reads array and create a tree:
@@ -58,16 +56,12 @@ function addNode(node, ind, parent)
 		return null;
 		
 	}else{
+		
 		let nd = {name:arr[ind],parent:parent,
 							children:[{},{}]};
 							
 		node = nd;
-		//console.log('ind,node:',ind,node);
-
-		/*
-		node.children[0] = addNode(node.children[0], 2*ind + 1, node.name);
-		node.children[1] = addNode(node.children[1], 2*ind + 2, node.name);
-		*/
+		
 		let left = addNode(node.children[0], 2*ind + 1, node.name);
 		let right = addNode(node.children[1], 2*ind + 2, node.name);
 		
@@ -89,33 +83,7 @@ console.log('preTree:',treeT);
 let treeData = treeT;
 
 
-/*
-var treeData = [
-  {
-    "name": "Top Level",
-    "parent": "null",
-    "children": [
-      {
-        "name": "Level 2: A",
-        "parent": "Top Level",
-        "children": [
-          {
-            "name": "Son of A",
-            "parent": "Level 2: A"
-          },
-          {
-            "name": "Daughter of A",
-            "parent": "Level 2: A"
-          }
-        ]
-      },
-      {
-        "name": "Level 2: B",
-        "parent": "Top Level"
-      }
-    ]
-  }
-];*/
+
 
 console.log('formatted tree:',treeData)
 
@@ -246,6 +214,35 @@ function click(d) {
   }
   update(d);
 }
+
+/*
+var treeData = [
+  {
+    "name": "Top Level",
+    "parent": "null",
+    "children": [
+      {
+        "name": "Level 2: A",
+        "parent": "Top Level",
+        "children": [
+          {
+            "name": "Son of A",
+            "parent": "Level 2: A"
+          },
+          {
+            "name": "Daughter of A",
+            "parent": "Level 2: A"
+          }
+        ]
+      },
+      {
+        "name": "Level 2: B",
+        "parent": "Top Level"
+      }
+    ]
+  }
+];*/
+
 
 </script>
 	
