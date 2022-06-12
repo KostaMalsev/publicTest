@@ -44,8 +44,8 @@
 
 <script>
 
-//let arr = [4, 5, 6, 2, 7, 88, 9, 0, -2, 7, 7];
-let arr = [4, 5, 6];
+let arr = [4, 5, 6, 2, 7, 88, 9, 0, -2, 7, 7];
+//let arr = [4, 5, 6];
 //let tree = [ {name:heap[0],parent:null,children:[{},{}] } ];
 let treeT = [{}];
 
@@ -55,7 +55,7 @@ function addNode(node, ind, parent)
   
 	if(ind > arr.length-1)
 	{
-		return {};
+		return null;
 		
 	}else{
 		let nd = {name:arr[ind],parent:parent,
@@ -73,9 +73,9 @@ function addNode(node, ind, parent)
 		
 		node.children = [];
 		
-		if(left!={})
+		if(left)
 			node.children[0] = left;
-		if(right!={})
+		if(right)
 			node.children[1] = right;
 		
 		return nd;
