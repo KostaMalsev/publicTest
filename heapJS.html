@@ -62,8 +62,6 @@
         
         let rightChildIndex = current * 2 + 1;
 
-        //console.log('heapfy:',this.heap,rightChildIndex,leftChildIndex);
-
         while (this.heap[leftChildIndex]!=null &&
           this.heap[rightChildIndex]!=null &&
           (this.heap[current] > this.heap[leftChildIndex] ||
