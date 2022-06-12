@@ -67,9 +67,7 @@
           (this.heap[current] > this.heap[leftChildIndex] ||
             this.heap[current] > this.heap[rightChildIndex])) 
             {
-              
-              console.log('heapfy:',this.heap,current,rightChildIndex,leftChildIndex);
-              
+                            
           if (this.heap[leftChildIndex] < this.heap[rightChildIndex]) 
           {
             [this.heap[current], this.heap[leftChildIndex]] = [this.heap[leftChildIndex], this.heap[current]]
@@ -81,6 +79,8 @@
 
           leftChildIndex = current * 2;
           rightChildIndex = current * 2 + 1;
+          console.log('heapfy:',this.heap,current,rightChildIndex,leftChildIndex);
+
         }
       }
 
