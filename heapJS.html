@@ -10,7 +10,7 @@
 
     getMin() {
       /* Accessing the min element at index 1 in the heap array */
-      return this.heap[1]
+      return this.heap[0]
     }
 
 
@@ -21,7 +21,7 @@
 
       /* Finding the correct position for the new node */
 
-      if (this.heap.length > 1) {
+      if (this.heap.length > 0) {
         let current = this.heap.length - 1
 
         /* Traversing up the parent node until the current node (current) is greater than the parent (current/2)*/
