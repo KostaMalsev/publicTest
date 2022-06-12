@@ -68,10 +68,18 @@
                     node.children = [];
 
                     if (left != null )
-                        node.children[1] = left;
+                    {
+                        if(left.name == 'null') 
+                          node.children[1] = {};
+                        else
+                          node.children[1] = left;
+                    }
                     if (right != null )
-                        node.children[0] = right;
-
+                    {
+                      if(left.name == 'null')
+                        node.children[0] = {};
+                      else  node.children[0] = right;
+                    }
                     return nd;
 
                 }
